@@ -19,6 +19,10 @@
 </head>
 <body>
 <div class="container">
+    <div class="achievement floatright aligncenter">
+        <strong>Achivement unlocked!</strong>
+        <p>100 designs created</p>
+    </div>
     <div class="c c1"></div>
     <div class="c c2"></div>
     <div class="t t1"></div>
@@ -32,16 +36,19 @@
 
 var totalwidth = window.innerWidth;
 var totalheight = window.innerHeight;
+var clicks = 0;
     
 $(window).resize(function() {
     var totalwidth = window.innerWidth;
     var totalheight = window.innerHeight;
 });
 
-$(window).load(function() {    
+$(window).load(function() {
 });
     
 $(".button").click(function() {
+    
+    clicks++;
     
     $(".button").addClass("pressed");
     
@@ -116,8 +123,22 @@ $(".button").click(function() {
         "margin-top": ((size5 / 2) + (dotsize2)) * -1
     });
     
+    if (clicks == 100) {
+        $(".achievement").css({
+            "opacity": 100,
+            "top": 20
+        });
+        setTimeout(function() {
+            $(".achievement").css({
+                "opacity": 0,
+                "top": 30
+            });
+        }, 5000);
+    };
+    
     console.log("farve " + colour1 + "," + colour2 + "," + colour3);
     console.log("størrelser " + size1 + "," + size2 + "," + size3);
+    console.log("clicks: " + clicks);
 });
 
 </script>
